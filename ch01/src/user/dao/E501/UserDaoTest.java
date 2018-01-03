@@ -2,6 +2,8 @@ package user.dao.E501;
 
 import java.sql.SQLException;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import user.domain.User;
 
 public class UserDaoTest {
