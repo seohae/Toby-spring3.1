@@ -1,0 +1,24 @@
+package user.dao.E604;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class CountingDaoFactory {
+	// 모든 DAO는 여전히 connectionMaker()에서 만들어지는 오브젝트를 DI 받는다.
+	@Bean
+	public UserDao userDao() {
+		return new UserDao(connectionMaker());
+	}
+
+	@Bean
+	public ConnectionMaker connectionMaker() {
+		return new CountingConnectionMaker(realConnectionMaker());
+	}
+
+	@Bean
+	public ConnectionMaker realConnectionMaker() {
+		return new DConnectionMaker();
+	}
+}
+
